@@ -128,6 +128,7 @@ open class StackView: UIView {
 private struct ViewLayout: ConfigurableLayout {
 
     let needsView = true
+    let nested = false
     let view: UIView
     let viewReuseId: String? = nil
 

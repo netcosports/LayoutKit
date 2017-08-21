@@ -21,6 +21,7 @@ open class InsetLayout<V: View>: BaseLayout<V>, ConfigurableLayout {
                 alignment: Alignment = Alignment.fill,
                 viewReuseId: String? = nil,
                 sublayout: Layout,
+                nested: Bool = false,
                 config: ((V) -> Void)? = nil) {
         self.insets = insets
         self.sublayout = sublayout

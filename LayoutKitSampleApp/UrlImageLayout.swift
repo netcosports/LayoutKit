@@ -15,7 +15,7 @@ import LayoutKit
  */
 class UrlImageLayout: SizeLayout<UrlImageView> {
 
-    init(url: URL, size: CGSize) {
+    init(url: URL, size: CGSize, reuseId: String) {
         let config = { (imageView: UrlImageView) in
             imageView.backgroundColor = UIColor.orange
             imageView.url = url
@@ -37,6 +37,7 @@ class UrlImageLayout: SizeLayout<UrlImageView> {
                    maxHeight: size.height,
                    alignment: .center,
                    flexibility: .inflexible,
+                   viewReuseId: reuseId,
                    config: config)
     }
 }

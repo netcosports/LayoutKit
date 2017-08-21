@@ -48,7 +48,7 @@ class NestedCollectionViewController: UIViewController {
     private static func makeLayout() -> LazyMapCollection<(CountableRange<Int>), Layout> {
         return (1..<100).lazy.map { index in
             let layout = sectionLayout(sectionIndex: index, count: index)
-            return FixedWidthCellCollectionViewLayout(cellWidth: 125, sectionLayouts: layout, config: { (collectionView: HorizontalCollectionView) in
+            return FixedWidthCellCollectionViewLayout(cellWidth: 125, sectionLayouts: layout, viewReuseId: "FixedWidthCellCollectionViewLayout", config: { (collectionView: HorizontalCollectionView) in
                 collectionView.backgroundColor = UIColor.white
             })
         }

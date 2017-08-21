@@ -15,8 +15,8 @@ import LayoutKit
 class LabeledImageLayout: StackLayout<UIView> {
 
     init(imageUrl: URL, imageSize: CGSize, labelText: String) {
-        let image = UrlImageLayout(url: imageUrl, size: imageSize)
-        let label = LabelLayout(text: labelText, alignment: Alignment(vertical: .top, horizontal: .center))
+        let image = UrlImageLayout(url: imageUrl, size: imageSize, reuseId: "UrlImageLayout")
+        let label = LabelLayout(text: labelText, alignment: Alignment(vertical: .top, horizontal: .center), viewReuseId: "LabelLayout")
         super.init(
             axis: .vertical,
             spacing: 8,

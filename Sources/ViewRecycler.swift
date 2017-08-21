@@ -35,7 +35,7 @@ class ViewRecycler {
      Returns a view for the layout.
      It may recycle an existing view or create a new view.
      */
-    func makeOrRecycleView(havingViewReuseId viewReuseId: String?, viewProvider: () -> View) -> View? {
+    func makeOrRecycleView(havingViewReuseId viewReuseId: String?, nested: Bool = false, viewProvider: () -> View) -> View? {
         // If we have a recyclable view that matches type and id, then reuse it.
         if let viewReuseId = viewReuseId, let view = viewsById[viewReuseId] {
             viewsById[viewReuseId] = nil
@@ -44,6 +44,7 @@ class ViewRecycler {
 
         let providedView = viewProvider()
         providedView.isLayoutKitView = true
+        providedView.nested = nested
 
         // Remove the provided view from the list of cached views.
         if let viewReuseId = providedView.viewReuseId, let oldView = viewsById[viewReuseId], oldView == providedView {
@@ -70,6 +71,7 @@ class ViewRecycler {
 }
 
 private var viewReuseIdKey: UInt8 = 0
+private var nestedKey: UInt8 = 0
 private var isLayoutKitViewKey: UInt8 = 0
 
 extension View {
@@ -78,6 +80,7 @@ extension View {
     func walkSubviews(visitor: (View) -> Void) {
         for subview in subviews {
             visitor(subview)
+            if subview.nested { return }
             subview.walkSubviews(visitor: visitor)
         }
     }
@@ -90,6 +93,15 @@ extension View {
         set {
             objc_setAssociatedObject(self, &viewReuseIdKey, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
+    }
+
+    public internal(set) var nested: Bool {
+      get {
+        return (objc_getAssociatedObject(self, &nestedKey) as? NSNumber)?.boolValue ?? false
+      }
+      set {
+        objc_setAssociatedObject(self, &nestedKey, NSNumber(value: newValue), .OBJC_ASSOCIATION_RETAIN)
+      }
     }
 
     /// Indicates the view is managed by LayoutKit that can be safely removed.

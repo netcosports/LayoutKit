@@ -25,16 +25,18 @@ open class BaseLayout<V: View> {
 
     /// A configuration block that is run on the main thread after the view is created.
     open let config: ((V) -> Void)?
+    open let nested: Bool
 
     open var needsView: Bool {
         return config != nil
     }
 
-    public init(alignment: Alignment, flexibility: Flexibility, viewReuseId: String? = nil, config: ((V) -> Void)?) {
+    public init(alignment: Alignment, flexibility: Flexibility, viewReuseId: String? = nil, nested: Bool = false, config: ((V) -> Void)?) {
         self.alignment = alignment
         self.flexibility = flexibility
         self.viewReuseId = viewReuseId
         self.config = config
+        self.nested = nested
     }
 
     open func configure(view: V) {
