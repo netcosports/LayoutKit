@@ -100,6 +100,7 @@ open class SizeLayout<V: View>: BaseLayout<V>, ConfigurableLayout {
                   flexibility: flexibility,
                   viewReuseId: viewReuseId,
                   sublayout: sublayout,
+                  nested: nested,
                   config: config)
     }
 
@@ -121,6 +122,7 @@ open class SizeLayout<V: View>: BaseLayout<V>, ConfigurableLayout {
                   flexibility: flexibility,
                   viewReuseId: viewReuseId,
                   sublayout: sublayout,
+                  nested: nested,
                   config: config)
     }
 
@@ -142,6 +144,7 @@ open class SizeLayout<V: View>: BaseLayout<V>, ConfigurableLayout {
                   flexibility: flexibility,
                   viewReuseId: viewReuseId,
                   sublayout: sublayout,
+                  nested: nested,
                   config: config)
     }
 
@@ -159,6 +162,7 @@ open class SizeLayout<V: View>: BaseLayout<V>, ConfigurableLayout {
                   flexibility: flexibility,
                   viewReuseId: viewReuseId,
                   sublayout: sublayout,
+                  nested: nested,
                   config: config)
     }
 
@@ -176,6 +180,7 @@ open class SizeLayout<V: View>: BaseLayout<V>, ConfigurableLayout {
                   flexibility: flexibility,
                   viewReuseId: viewReuseId,
                   sublayout: sublayout,
+                  nested: nested,
                   config: config)
     }
 
@@ -193,6 +198,7 @@ open class SizeLayout<V: View>: BaseLayout<V>, ConfigurableLayout {
                   flexibility: flexibility,
                   viewReuseId: viewReuseId,
                   sublayout: sublayout,
+                  nested: nested,
                   config: config)
     }
 
